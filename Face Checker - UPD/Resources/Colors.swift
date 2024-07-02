@@ -12,7 +12,9 @@ extension Color {
         static var accentGreen: Color {
             Color("accentGreen")
         }
-        
+        static var btnColor: Color {
+            Color("BtnColor")
+        }
         static var background: Color {
             Color("background")
         }

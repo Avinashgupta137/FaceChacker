@@ -48,6 +48,10 @@
 		4C58C8292B7E015A002996B8 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C58C8252B7E015A002996B8 /* DMSans-Regular.ttf */; };
 		4C58C82A2B7E015A002996B8 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C58C8262B7E015A002996B8 /* DMSans-Medium.ttf */; };
 		4C58C82C2B7E0193002996B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C58C82B2B7E0193002996B8 /* LaunchScreen.storyboard */; };
+		686553212C3461130063A392 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6865531E2C3461130063A392 /* NoInternetView.swift */; };
+		686553222C3461130063A392 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6865531F2C3461130063A392 /* SplashView.swift */; };
+		686553242C3461960063A392 /* ButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686553232C3461960063A392 /* ButtonExt.swift */; };
+		686553262C34677E0063A392 /* Face_Picker_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686553252C34677E0063A392 /* Face_Picker_Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,10 @@
 		4C58C8252B7E015A002996B8 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
 		4C58C8262B7E015A002996B8 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		4C58C82B2B7E0193002996B8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6865531E2C3461130063A392 /* NoInternetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
+		6865531F2C3461130063A392 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		686553232C3461960063A392 /* ButtonExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonExt.swift; path = "../../../../Downloads/Face-Checker-main/Face Checker - UPD/Resources/ButtonExt.swift"; sourceTree = "<group>"; };
+		686553252C34677E0063A392 /* Face_Picker_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face_Picker_Controller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +155,7 @@
 		3B86F0C82B7E090B00D4D29A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				686553202C3461130063A392 /* LaunchScreen */,
 				3B86F0CD2B7E09A600D4D29A /* Sources */,
 				3B86F0CC2B7E098700D4D29A /* Results */,
 				3B86F0CB2B7E095D00D4D29A /* Home */,
@@ -178,6 +187,7 @@
 			children = (
 				4C58C7DE2B7DFFE6002996B8 /* HomeViewController_Face Checker - UPD.swift */,
 				4C58C7DC2B7DFFD4002996B8 /* HomeView_Face Checker - UPD.swift */,
+				686553252C34677E0063A392 /* Face_Picker_Controller.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -272,6 +282,7 @@
 				4C58C82B2B7E0193002996B8 /* LaunchScreen.storyboard */,
 				4C58C8172B7E0143002996B8 /* Constants.swift */,
 				4C58C8182B7E0143002996B8 /* Colors.swift */,
+				686553232C3461960063A392 /* ButtonExt.swift */,
 				4C58C7A82B7DF431002996B8 /* Face Checker - UPD-Bridging-Header.h */,
 			);
 			path = Resources;
@@ -284,6 +295,16 @@
 				4C58C7B32B7DF432002996B8 /* NetworkStatusMonitor_Face Checker - UPD.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		686553202C3461130063A392 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6865531E2C3461130063A392 /* NoInternetView.swift */,
+				6865531F2C3461130063A392 /* SplashView.swift */,
+			);
+			name = LaunchScreen;
+			path = "../../../../Downloads/Face-Checker-main/Face Checker - UPD/Screens/LaunchScreen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +395,7 @@
 				4C58C8212B7E0143002996B8 /* Images.swift in Sources */,
 				4C58C7C32B7DF432002996B8 /* AppRouter_FaceChecker_UPD.swift in Sources */,
 				4C58C8152B7E0132002996B8 /* Color+Extensions_Face Checker - UPD.swift in Sources */,
+				686553242C3461960063A392 /* ButtonExt.swift in Sources */,
 				4C58C7FA2B7E00E7002996B8 /* PopupView_POPOPOVLAD.swift in Sources */,
 				4C58C7F12B7E0064002996B8 /* ResultCell.swift in Sources */,
 				4C58C80A2B7E0117002996B8 /* Endpoint_POPOPOVLAD.swift in Sources */,
@@ -385,6 +407,7 @@
 				4C58C7DF2B7DFFE6002996B8 /* HomeViewController_Face Checker - UPD.swift in Sources */,
 				4C58C7F52B7E0069002996B8 /* SourcesView_Face Checker - UPD.swift in Sources */,
 				4C58C7FF2B7E0105002996B8 /* NetworkManager_FaceChecker_UPD.swift in Sources */,
+				686553222C3461130063A392 /* SplashView.swift in Sources */,
 				4C58C8002B7E0105002996B8 /* Helper_Face Checker - UPD.swift in Sources */,
 				4C58C7BE2B7DF432002996B8 /* SceneDelegate.swift in Sources */,
 				4C58C80D2B7E0117002996B8 /* FaceMessage.swift in Sources */,
@@ -398,10 +421,12 @@
 				4C58C7F32B7E0066002996B8 /* ResultsView.swift in Sources */,
 				4C58C80C2B7E0117002996B8 /* UploadResponse.swift in Sources */,
 				4C58C7F42B7E0068002996B8 /* SourcesViewController_Face Checker - UPD.swift in Sources */,
+				686553262C34677E0063A392 /* Face_Picker_Controller.swift in Sources */,
 				4C58C7EF2B7E0061002996B8 /* CheckView.swift in Sources */,
 				4C58C80B2B7E0117002996B8 /* SearchResponse.swift in Sources */,
 				4C58C7F02B7E0062002996B8 /* CheckViewController.swift in Sources */,
 				4C58C8162B7E0132002996B8 /* View+Extensions_Face Checker - UPD.swift in Sources */,
+				686553212C3461130063A392 /* NoInternetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,7 +560,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SQPM757FFZ;
+				DEVELOPMENT_TEAM = 64L94BA337;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Face Checker - UPD/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -550,7 +575,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
-				PRODUCT_BUNDLE_IDENTIFIER = "atr.Face-Checker---UPD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.avinash.appsquad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -573,7 +598,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SQPM757FFZ;
+				DEVELOPMENT_TEAM = 64L94BA337;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Face Checker - UPD/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -588,7 +613,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
-				PRODUCT_BUNDLE_IDENTIFIER = "atr.Face-Checker---UPD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.avinash.appsquad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
