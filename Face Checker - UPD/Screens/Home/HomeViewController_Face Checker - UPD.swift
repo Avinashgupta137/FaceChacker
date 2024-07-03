@@ -39,6 +39,7 @@ final class HomeViewController_FaceChecker_UPD: UIViewController, ViewHostable_F
             DispatchQueue.main.async {
                 if path.status == .satisfied {
                     self.transitionToHomeView()
+                   // self.showNoInternetView()
                 } else {
                     self.showNoInternetView()
                 }
@@ -53,23 +54,24 @@ final class HomeViewController_FaceChecker_UPD: UIViewController, ViewHostable_F
         self.splashView?.view.removeFromSuperview()
         self.splashView?.removeFromParent()
         self.splashView = nil
+        
         self.add_POPOPOVLAD(hostableView: Face_Picker_Controller())
     }
     
     private func showNoInternetView() {
-           self.splashView?.willMove(toParent: nil)
-           self.splashView?.view.removeFromSuperview()
-           self.splashView?.removeFromParent()
-           self.splashView = nil
-           
-           let noInternetView = UIHostingController(rootView: NoInternetView(retryAction: {
-               self.checkInternetConnection()
-           }))
-           noInternetView.view.frame = self.view.bounds
-           self.view.addSubview(noInternetView.view)
-           self.addChild(noInternetView)
-           self.noInternetView = noInternetView
-       }
+        self.splashView?.willMove(toParent: nil)
+        self.splashView?.view.removeFromSuperview()
+        self.splashView?.removeFromParent()
+        self.splashView = nil
+        
+        let noInternetView = UIHostingController(rootView: NoInternetView(retryAction: {
+            self.checkInternetConnection()
+        }))
+        noInternetView.view.frame = self.view.bounds
+        self.view.addSubview(noInternetView.view)
+        self.addChild(noInternetView)
+        self.noInternetView = noInternetView
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

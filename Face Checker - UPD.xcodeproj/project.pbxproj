@@ -48,10 +48,10 @@
 		4C58C8292B7E015A002996B8 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C58C8252B7E015A002996B8 /* DMSans-Regular.ttf */; };
 		4C58C82A2B7E015A002996B8 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C58C8262B7E015A002996B8 /* DMSans-Medium.ttf */; };
 		4C58C82C2B7E0193002996B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C58C82B2B7E0193002996B8 /* LaunchScreen.storyboard */; };
-		686553212C3461130063A392 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6865531E2C3461130063A392 /* NoInternetView.swift */; };
-		686553222C3461130063A392 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6865531F2C3461130063A392 /* SplashView.swift */; };
-		686553242C3461960063A392 /* ButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686553232C3461960063A392 /* ButtonExt.swift */; };
 		686553262C34677E0063A392 /* Face_Picker_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686553252C34677E0063A392 /* Face_Picker_Controller.swift */; };
+		686C74E52C35BC8300F024AF /* ButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C74E42C35BC8300F024AF /* ButtonExt.swift */; };
+		686C74E82C35BDDD00F024AF /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C74E72C35BDDD00F024AF /* NoInternetView.swift */; };
+		686C74EA2C35BEEF00F024AF /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686C74E92C35BEEF00F024AF /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,10 +98,10 @@
 		4C58C8252B7E015A002996B8 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
 		4C58C8262B7E015A002996B8 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		4C58C82B2B7E0193002996B8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6865531E2C3461130063A392 /* NoInternetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
-		6865531F2C3461130063A392 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		686553232C3461960063A392 /* ButtonExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonExt.swift; path = "../../../../Downloads/Face-Checker-main/Face Checker - UPD/Resources/ButtonExt.swift"; sourceTree = "<group>"; };
 		686553252C34677E0063A392 /* Face_Picker_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face_Picker_Controller.swift; sourceTree = "<group>"; };
+		686C74E42C35BC8300F024AF /* ButtonExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExt.swift; sourceTree = "<group>"; };
+		686C74E72C35BDDD00F024AF /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
+		686C74E92C35BEEF00F024AF /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 		3B86F0C82B7E090B00D4D29A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				686553202C3461130063A392 /* LaunchScreen */,
+				686C74E62C35BDC600F024AF /* LaunchScreen */,
 				3B86F0CD2B7E09A600D4D29A /* Sources */,
 				3B86F0CC2B7E098700D4D29A /* Results */,
 				3B86F0CB2B7E095D00D4D29A /* Home */,
@@ -281,8 +281,8 @@
 				4C58C81B2B7E0143002996B8 /* Images.swift */,
 				4C58C82B2B7E0193002996B8 /* LaunchScreen.storyboard */,
 				4C58C8172B7E0143002996B8 /* Constants.swift */,
+				686C74E42C35BC8300F024AF /* ButtonExt.swift */,
 				4C58C8182B7E0143002996B8 /* Colors.swift */,
-				686553232C3461960063A392 /* ButtonExt.swift */,
 				4C58C7A82B7DF431002996B8 /* Face Checker - UPD-Bridging-Header.h */,
 			);
 			path = Resources;
@@ -297,14 +297,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		686553202C3461130063A392 /* LaunchScreen */ = {
+		686C74E62C35BDC600F024AF /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				6865531E2C3461130063A392 /* NoInternetView.swift */,
-				6865531F2C3461130063A392 /* SplashView.swift */,
+				686C74E72C35BDDD00F024AF /* NoInternetView.swift */,
+				686C74E92C35BEEF00F024AF /* SplashView.swift */,
 			);
-			name = LaunchScreen;
-			path = "../../../../Downloads/Face-Checker-main/Face Checker - UPD/Screens/LaunchScreen";
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,7 +394,6 @@
 				4C58C8212B7E0143002996B8 /* Images.swift in Sources */,
 				4C58C7C32B7DF432002996B8 /* AppRouter_FaceChecker_UPD.swift in Sources */,
 				4C58C8152B7E0132002996B8 /* Color+Extensions_Face Checker - UPD.swift in Sources */,
-				686553242C3461960063A392 /* ButtonExt.swift in Sources */,
 				4C58C7FA2B7E00E7002996B8 /* PopupView_POPOPOVLAD.swift in Sources */,
 				4C58C7F12B7E0064002996B8 /* ResultCell.swift in Sources */,
 				4C58C80A2B7E0117002996B8 /* Endpoint_POPOPOVLAD.swift in Sources */,
@@ -404,10 +402,11 @@
 				4C58C7BB2B7DF432002996B8 /* Configurations_Face Checker - UPD.swift in Sources */,
 				4C58C7EE2B7E0060002996B8 /* BrowseViewController_Face Checker - UPD.swift in Sources */,
 				4C58C8012B7E0105002996B8 /* Logger_Face Checker - UPD.swift in Sources */,
+				686C74E82C35BDDD00F024AF /* NoInternetView.swift in Sources */,
 				4C58C7DF2B7DFFE6002996B8 /* HomeViewController_Face Checker - UPD.swift in Sources */,
 				4C58C7F52B7E0069002996B8 /* SourcesView_Face Checker - UPD.swift in Sources */,
+				686C74EA2C35BEEF00F024AF /* SplashView.swift in Sources */,
 				4C58C7FF2B7E0105002996B8 /* NetworkManager_FaceChecker_UPD.swift in Sources */,
-				686553222C3461130063A392 /* SplashView.swift in Sources */,
 				4C58C8002B7E0105002996B8 /* Helper_Face Checker - UPD.swift in Sources */,
 				4C58C7BE2B7DF432002996B8 /* SceneDelegate.swift in Sources */,
 				4C58C80D2B7E0117002996B8 /* FaceMessage.swift in Sources */,
@@ -424,9 +423,9 @@
 				686553262C34677E0063A392 /* Face_Picker_Controller.swift in Sources */,
 				4C58C7EF2B7E0061002996B8 /* CheckView.swift in Sources */,
 				4C58C80B2B7E0117002996B8 /* SearchResponse.swift in Sources */,
+				686C74E52C35BC8300F024AF /* ButtonExt.swift in Sources */,
 				4C58C7F02B7E0062002996B8 /* CheckViewController.swift in Sources */,
 				4C58C8162B7E0132002996B8 /* View+Extensions_Face Checker - UPD.swift in Sources */,
-				686553212C3461130063A392 /* NoInternetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
