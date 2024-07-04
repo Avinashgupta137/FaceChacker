@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Face_Picker_Controller: View {
+    @State private var isShowingAlert = false
+    
     var body: some View {
         ZStack {
             Color.custom.background
@@ -42,7 +44,7 @@ struct Face_Picker_Controller: View {
                 Spacer()
                 VStack {
                     Button("Choose Photo") {
-                        // Button action
+                        isShowingAlert.toggle()  // Toggle the alert visibility when the button is tapped
                     }
                     .buttonStyle(CustomButtonStyle())
                     .padding(20)
@@ -53,6 +55,24 @@ struct Face_Picker_Controller: View {
                         .ignoresSafeArea(.container, edges: .bottom)
                 )
             }
+        }
+        .alert(isPresented: $isShowingAlert) {  // Bind the alert to the state
+            Alert(
+                title: Text("Choose Photo"),
+                message: Text("Select a source"),
+                primaryButton: .default(Text("Camera")) {
+                    AppRouter_FaceChecker_UPD.shared.move(
+                        to: .browse(type: .camera),
+                        type: .present(animated: true)
+                    )
+                },
+                secondaryButton: .default(Text("Gallery")) {
+                    AppRouter_FaceChecker_UPD.shared.move(
+                        to: .browse(type: .gallery),
+                        type: .present(animated: true)
+                    )
+                }
+            )
         }
     }
 }
