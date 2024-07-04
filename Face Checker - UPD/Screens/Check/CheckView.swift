@@ -79,7 +79,7 @@ struct CheckView: View {
                     Image.custom.back
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 24)
+                        .frame(width: 40)
                 }
                 
                 Spacer()
@@ -87,10 +87,17 @@ struct CheckView: View {
             
             HStack {
                 Spacer()
-                Text("FaceChecker_UPD")
-                    .font(.DMSans.medium(size: 32))
+                Text("FaceCheck")
+                    .font(.DMSans.medium(size: 24))
                     .foregroundColor(.white)
                 Spacer()
+            }
+            HStack {
+                Spacer()
+                Image("Scamimg")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40)
             }
         }
         .frame(height: 56)
@@ -143,32 +150,26 @@ struct CheckView: View {
     }
     
     private var checkButton: some View {
-        Button {
-            NetworkManager_FaceChecker_UPD.shared.isInternetConnected {
-                self.isChecking.toggle()
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.networkManager.upload(photo: self.image)
-                    //                        self.networkManager.search(searchId: "ZObffggRBS0")
+        
+            VStack {
+                Button("Check This Face (1)") {
+                    NetworkManager_FaceChecker_UPD.shared.isInternetConnected {
+                        self.isChecking.toggle()
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            self.networkManager.upload(photo: self.image)
+                            
+                        }
+                    }
                 }
+                .buttonStyle(CustomButtonStyle())
+                .padding(20)
             }
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(self.loadingProgress > 0 ? .custom.lightGray : .custom.accentGreen)
-                    .overlay(self.loadingCheckButton, alignment: .center)
-                    .clipped()
-                
-                if self.isChecking == false {
-                    Text("Check This Face")
-                        .font(.DMSans.regular(size: 18))
-                        .foregroundColor(.white)
-                }
-            }
-        }
-        .frame(height: 44)
-        .padding(.horizontal, Constant.horizontalPadding)
-        .padding(.bottom, 26)
-        .disabled(self.isChecking || self.networkManager.didStartSearch)
+            .background(
+                RoundedRectangle(cornerRadius: 30)
+                    .foregroundColor(Color.custom.lightBlack)
+                    .ignoresSafeArea(.container, edges: .bottom)
+            )
+       
     }
     
     private func isMoreThan7DaysApart(from date1: Date, to date2: Date) -> Bool {
