@@ -12,7 +12,7 @@ struct ResultsView: View {
     // MARK: - Variables
     
     @ObservedObject var networkManager = NetworkManager_FaceChecker_UPD.shared
-    
+    @State private var selectedIndex: Int? = nil
     let image: UIImage
     
     private func getGridColumns(with geo: GeometryProxy) -> [GridItem] {
@@ -21,7 +21,7 @@ struct ResultsView: View {
         } else if Helper_FaceChecker_UPD.isPad {
             return Array(repeating: GridItem(spacing: 9), count: 5)
         } else {
-            return Array(repeating: GridItem(spacing: 9), count: Int(geo.size.width) / 150)
+            return Array(repeating: GridItem(spacing: 9), count: 3)
         }
     }
     
@@ -59,6 +59,14 @@ struct ResultsView: View {
             }
             
             Spacer()
+            
+            Text("Results")
+                .foregroundColor(.white)
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            Spacer()
+                .frame(width: 24)
         }
         .frame(height: 56)
         .padding(.horizontal, Constant.horizontalPadding)
@@ -70,24 +78,30 @@ struct ResultsView: View {
             if let searchGroups = self.networkManager.searchOutput {
                 ScrollView {
                     LazyVGrid(columns: self.getGridColumns(with: geo)) {
-                        ForEach(searchGroups, id: \.self) { group in
-                            
-                            if let data = group.data,
+                        ForEach(searchGroups.indices, id: \.self) { index in
+                            if let data = searchGroups[index].data,
                                let uiImage = UIImage(data: data),
-                               let score = group.score
+                               let score = searchGroups[index].score
                             {
-                                ResultCell(image: uiImage, score: score)
+                                ResultCell(image: uiImage, score: score, isSelected: selectedIndex == index)
                                     .onTapGesture {
-                                        AppRouter_FaceChecker_UPD.shared.move(
-                                            to: .sources(image: uiImage, group: group),
-                                            type: .push(animated: true)
-                                        )
+                                        if selectedIndex == index {
+                                            // Deselect if tapped again
+                                            selectedIndex = nil
+                                        } else {
+                                            // Select the tapped cell
+                                            selectedIndex = index
+                                            AppRouter_FaceChecker_UPD.shared.move(
+                                                to: .sources(image: uiImage, group: searchGroups[index]),
+                                                type: .push(animated: true)
+                                            )
+                                        }
                                     }
                             }
                         }
                     }
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
             }
         }
     }

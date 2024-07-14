@@ -13,6 +13,7 @@ struct ResultCell: View {
     
     var image: UIImage
     var score: Int
+    var isSelected: Bool
     
     var circleColor: Color {
         switch self.score {
@@ -43,11 +44,17 @@ struct ResultCell: View {
     var body: some View {
         ZStack {
             self.imageView
-                .frame(width: 110, height: 145)
+                .frame(width: 100, height: 155)
             self.scoreView
         }
-        .frame(minWidth: 110, minHeight: 145)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .frame(minWidth: 100, minHeight: 155)
+        .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(isSelected ? Color.orange : Color.clear, lineWidth: 5)
+            )
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        
+        
     }
     
     // MARK: - Views
@@ -61,20 +68,51 @@ struct ResultCell: View {
     
     private var scoreView: some View {
         VStack {
-            Spacer()
+            if isSelected {
+                HStack {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .foregroundColor(Color.black.opacity(0.2)) // Black with 20% opacity
+                        
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.orange)
+                            .font(.system(size: 20, weight: .bold)) // Adjust the size and weight as needed
+                    }
+                    .frame(width: 36, height: 36)
+                    .padding(8)
+                }
+            }
+                Spacer()
             HStack {
+                ZStack {
+                    Circle()
+                        .foregroundColor(Color.black.opacity(0.6)) // Black with 20% opacity
+                    
+                    //                    Circle()
+                    //                        .trim(from: 0, to: CGFloat(self.score) / 100)
+                    //                        .stroke(self.circleColor, lineWidth: 3.5)
+                    //                        .rotationEffect(.degrees(-90))
+                    
+                    Text("x6")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(.white)
+                }
+                .frame(width: 36, height: 36)
+                .padding(8)
+                
                 Spacer()
                 ZStack {
                     Circle()
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.black.opacity(0.6))
                     
-                    Circle()
-                        .trim(from: 0, to: CGFloat(self.score) / 100)
-                        .stroke(self.circleColor, lineWidth: 3.5)
-                        .rotationEffect(.degrees(-90))
+//                    Circle()
+//                        .trim(from: 0, to: CGFloat(self.score) / 100)
+//                        .stroke(self.circleColor, lineWidth: 3.5)
+//                        .rotationEffect(.degrees(-90))
                     
-                    Text("\(self.score)%")
-                        .font(.DMSans.medium(size: 12))
+                    Text("\(Int(self.score))%")
+                        .font(.system(size: 12, weight: .medium))
                         .foregroundColor(self.textColor)
                 }
                 .frame(width: 36, height: 36)

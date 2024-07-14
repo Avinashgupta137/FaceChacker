@@ -57,27 +57,53 @@ struct SourcesView: View {
     // MARK: - Body
     
     var body: some View {
+        
         ZStack {
             Color.custom.background
                 .ignoresSafeArea()
-            
             VStack {
-                self.headerView
-                Spacer()
-                self.photoView
-                Spacer()
-                self.linksView
-                Spacer()
-                Spacer()
+                headerView
+                .padding(.horizontal, Constant.horizontalPadding)
+                ScrollView {
+                    ZStack(alignment: .bottomLeading) {
+                        Image(uiImage: self.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipped()
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                        
+                        HStack {
+                            Spacer()
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(.white)
+                                
+                                if let firstItem = self.group.items?.first {
+                                    Circle()
+                                        .foregroundColor(Color.black.opacity(0.6))
+                                    Text("\(firstItem.score)%")
+                                        .font(.DMSans.medium(size: 16))
+                                        .foregroundColor(self.textColor)
+                                }
+                            }
+                            .frame(width: 48, height: 48)
+                            .padding(.trailing, 24)
+                            .padding(.bottom, 16)
+                        }
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 40)
+                    .padding(.top, 16)
+                    morePhotoVideoView
+                        .padding(.horizontal)
+                    linksView
+                    newsView
+                    
+                    
+                }
             }
         }
-        .onAppear {
-           // Task {
-                self.getFavicons()
-        //    }
-            Log_FaceChecker_UPD.info_FaceChecker_UPD("Group: \(self.group.groupIndex ?? -1)")
-        }
     }
+
     
     // MARK: - Views
     
@@ -93,6 +119,13 @@ struct SourcesView: View {
             }
             
             Spacer()
+            Text("Results")
+                .foregroundColor(.white)
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            Spacer()
+                .frame(width: 24)
         }
         .frame(height: 56)
         .padding(.horizontal, Constant.horizontalPadding)
@@ -109,81 +142,129 @@ struct SourcesView: View {
             self.scoreView
         }
         .frame(width: UIScreen.main.bounds.width - 40)
+        .padding(.top, 16)
+    }
+    private var morePhotoVideoView: some View {
+        Button {
+            print("Clicked")
+        } label: {
+            HStack {
+                Image(systemName: "photo.fill")
+                    .resizable()
+                    .foregroundColor(.white)
+                    .frame(width: 25, height: 25)
+                Text("More Photos & Videos")
+                    .foregroundColor(.white)
+            }
+            .padding()
+        }
+        .buttonStyle(CustomButtonStyle())
     }
     
     private var scoreView: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                ZStack {
-                    Circle()
-                        .foregroundColor(.white)
-                    
-                    if let firstItem = self.group.items?.first {
-                        Circle()
-                            .trim(from: 0, to: CGFloat(firstItem.score) / 100)
-                            .stroke(self.circleColor, lineWidth: 4.5)
-                            .rotationEffect(.degrees(-90))
-                        
-                        Text("\(firstItem.score)%")
-                            .font(.DMSans.medium(size: 16))
-                            .foregroundColor(self.textColor)
-                    }
-                }
-                .frame(width: 48, height: 48)
-                .padding(.trailing, 24)
-                .padding(.bottom, 16)
-            }
-        }
-    }
+           VStack {
+               Spacer()
+               HStack {
+                   Spacer()
+                   ZStack {
+                       Circle()
+                           .foregroundColor(.white)
+                       
+                       if let firstItem = self.group.items?.first {
+                           Circle()
+                               .foregroundColor(Color.black.opacity(0.6))
+                           Text("\(firstItem.score)%")
+                               .font(.DMSans.medium(size: 16))
+                               .foregroundColor(self.textColor)
+                       }
+                   }
+                   .frame(width: 48, height: 48)
+                   .padding(.trailing, 24)
+                   .padding(.bottom, 16)
+               }
+           }
+       }
     
     private var linksView: some View {
-        ScrollView {
-            VStack {
-                if let items = self.group.items {
-                    ForEach(Array(items.indices), id: \.self) { index in
-                        self.linkView(index: index)
-                    }
-                }
-            }
-        }
-    }
-    
+           ScrollView(.horizontal, showsIndicators: false) {
+               HStack {
+                   if let items = self.group.items {
+                       ForEach(Array(items.indices), id: \.self) { index in
+                           self.linkView(index: index)
+                       }
+                   }
+               }
+           }
+           .padding(.horizontal, 20)
+       }
     private func linkView(index: Int) -> some View {
-        Button {
-            if let items = self.group.items, let url = URL(string: items[index].url) {
-                UIApplication.shared.open(url)
-            }
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 30)
+           Button {
+               if let items = self.group.items, let url = URL(string: items[index].url) {
+                   UIApplication.shared.open(url)
+               }
+           } label: {
+               ZStack {
+                   RoundedRectangle(cornerRadius: 30)
+                       .foregroundColor(Color.custom.lightBlack)
+                   
+                   HStack(spacing: 8) {
+                       if let favicon = self.favicons[index] {
+                           Image(uiImage: favicon)
+                               .resizable()
+                               .aspectRatio(contentMode: .fit)
+                               .frame(width: 32)
+                       } else {
+                           Rectangle()
+                               .foregroundColor(.white)
+                               .frame(width: 32, height: 32)
+                       }
+                       
+                       Text(self.hosts[index] ?? "Check source")
+                           .font(.DMSans.medium(size: 16))
+                           .foregroundColor(.white)
+                           .lineLimit(2)
+                       
+                       Spacer()
+                   }
+                   .padding()
+               }
+           }
+           .frame(height: 56)
+           .padding(.horizontal, 20)
+       }
+    
+    private var newsView: some View {
+        VStack {
+            HStack {
+                Text("News")
                     .foregroundColor(.white)
-                
-                HStack(spacing: 8) {
-                    if let favicon = self.favicons[index] {
-                        Image(uiImage: favicon)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32)
-                    } else {
-                        Rectangle()
-                            .foregroundColor(.white)
-                            .frame(width: 32, height: 32)
-                    }
-                    
-                    Text(self.hosts[index] ?? "Check source")
-                        .font(.DMSans.medium(size: 16))
-                        .foregroundColor(.black)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 16)
+                    .font(.title)
+                    .padding()
+                Spacer()
+            }
+            ForEach(1..<4) { index in
+                newsViewList(index: index)
             }
         }
-        .frame(height: 56)
         .padding(.horizontal, 20)
     }
+
+     private func newsViewList(index: Int) -> some View {
+         VStack {
+             Image("purchaseBackground")
+                 .resizable()
+                 .frame(height: 130)
+                 .cornerRadius(20)
+             Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle")
+                 .foregroundColor(Color.white)
+                 .lineLimit(2)
+         }
+         .padding()
+         .background(Color.custom.lightBlack)
+         .cornerRadius(20)
+     }
+
+
     
     // MARK: - Methods
     
